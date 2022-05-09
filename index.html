@@ -1,0 +1,114 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouNote</title>
+    <link rel="stylesheet" href="styleHome.css">
+    <script defer src="jquery/jquery-ui.js"></script>
+    <script defer src="jquery/script.js"></script>
+    <script defer src="index.js"></script>
+</head>
+<body>
+    <div id="header" class="flex">
+        <div class="logo">
+            <h3>You_Notes</h3>
+        </div>
+        <div id="tabs" class="flex">
+            <div class="tab"><p>Home</p></div>
+            <div class="tab tab1"><p>Inbox</p></div>
+            <div class="tab tab2"><p>Share</p></div>
+            <div class="tab tab3"><h5>Profile</h5></div>
+        </div>
+    </div>
+    <div id="body" class="flex">
+        <div class="bodyLeft flex">
+            <div id="themeBox" class="card">
+
+            </div>
+            <div class="journal">
+                <form action="" id="cjForm" class="flex">
+                    <div class="cjHead flex">
+                        <p>Common Journal</p>
+                        <p class="icon">&#8595</p>
+                    </div>
+                    <textarea name="commonJournal" type="text" placeholder="It's really sunny but I feel sad.">
+                    </textarea>
+                    <button>Save</button>
+                </form>
+            </div>
+        </div>
+        <div class="bodyMid flex">
+            <div class="journal">
+                <form action="" id="gjForm" class="flex">
+                    <input name="gratitudeJournal" type="text" placeholder="Write your most gratifying moments &#10084;"/>
+                    <button> Edit </button>
+                </form>
+            </div>
+            <div class="cards2Col">
+                <div class="card1Col">
+                    <div class="flex">
+                        <p>Todos</p>
+                        <button> Add </button>
+                    </div>
+                    <div class="todoItem card flex">
+                        <p>Clean the room</p>
+                        <div class="footer">
+                            <p>i</p>
+                            <p>c</p>
+                            <p>x</p>
+                        </div>
+                    </div>
+                    <div class="todoItem card flex">
+                        <p>Clean the room</p>
+                        <div class="footer">
+                            <p>i</p>
+                            <p>c</p>
+                            <p>x</p>
+                        </div>
+                    </div>
+                    <div class="todoItem card flex">
+                        <p>Clean the room</p>
+                        <div class="footer">
+                            <p>i</p>
+                            <p>c</p>
+                            <p>x</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card2Col">
+                    <div class="flex">
+                        <p>Projects</p>
+                        <button> New </button>
+                    </div>
+                    <div class="projItem card flex">
+                        <p>Clean the room</p>
+                        <div class="footer">
+                            <p>i</p>
+                            <p>c</p>
+                            <p>x</p>
+                        </div>
+                    </div>
+                    <div class="projItem card flex">
+                        <p>Clean the room</p>
+                        <div class="footer">
+                            <p>i</p>
+                            <p>c</p>
+                            <p>x</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bodyRight">
+            <p>Progress</p>
+            <div class="status card">
+                <div class="statusItem flex">
+                    <p>i</p>
+                    <p>Clean the room</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
