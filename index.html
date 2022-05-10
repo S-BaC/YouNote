@@ -22,7 +22,7 @@
         </div>
     </div>
     <div id="addToList" class="form flex card">
-        <h2>New Todo</h2>
+        <h2>Speeding Up !</h2>
         <form action="">
             <label for="title">Title</label>
             <input type="text" name="title"/>
@@ -45,39 +45,59 @@
     </div>
     <div id="body" class="flex">
         <div class="bodyLeft flex">
-            <div id="themeBox" class="card">
-                <div class="themeFooter">
-                    <img src="icons/info (1).png" alt="detail" class="icon">
+            <div class="flexspecial">
+                <div id="themeBox" class="card flex">
+                    <div>
+                       <h1 id="themeTitle"></h1>
+                        <p id="themeDes"></p> 
+                    </div>
+                    <form action="">
+                        <input type="text" name="title" placeholder="Title">
+                        <input type="text" name="des" placeholder="Details">
+                        <button>CONFIRM</button>
+                    </form>
+                    <img id="themeEditIcon" class="icon" src="icons/edit.png">
                 </div>
+                <p>   
+                    A "theme" is what your focus will be for this year/season/period.<br>
+                    It's the overarching agenda that you should have in mind.
+                </p>
             </div>
+            
             <div class="journal">
                 <form action="" id="cjForm" class="flex">
                     <div class="cjHead flex">
-                        <p>Common Journal &#8595</p>
+                        <p>Misc. Journal &#8595</p>
                     </div>
-                    <textarea name="commonJournal" type="text" placeholder="It's really sunny but I feel sad.">
+                    <textarea name="commonJournal" type="text" placeholder="What's on your mind?">
                     </textarea>
-                    <button>Save</button>
+                    <ul id="mjText"></ul>
+                    <div class="flex cjBtns">
+                        <button id="cjSave">Save</button>
+                        <button id="cjView">View</button>
+                    </div>
                 </form>
             </div>
         </div>
         <div class="bodyMid flex">
             <div class="journal">
+                <div id="gjText"></div>
                 <form action="" id="gjForm" class="flex">
                     <input name="gratitudeJournal" type="text" placeholder="Write down your most gratifying moments &#10084;"/>
-                    <button> Add </button>
+                    <button> Change </button>
                 </form>
+                <img id="gjEditIcon" class="icon" src="icons/edit.png">
             </div>
             <div class="cards2Col">
                 <div class="card1Col">
-                    <div class="flex">
+                    <div class="flex list">
                         <p>Todos</p>
                         <button> Add </button>
                     </div>
                     <div class="c1wrapper"></div>
                 </div>
                 <div class="card2Col">
-                    <div class="flex">
+                    <div class="flex list">
                         <p>Projects</p>
                         <button> New </button>
                     </div>
@@ -86,7 +106,11 @@
             </div>
         </div>
         <div class="bodyRight">
-            <p>Progress</p>
+            <div class="flex list">
+                <p>Progress</p>
+                <button> Clear </button>
+            </div>
+            <div class="c3wrapper"></div>
         </div>
     </div>
 </body>

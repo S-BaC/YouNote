@@ -23,8 +23,10 @@ body {
 .flex {
   display: flex;
   gap: 3vw;
-  /* justify-content: center;
-    align-items: center; */
+}
+.list{
+  align-items: baseline;
+  justify-content: flex-start;
 }
 .card {
   border-radius: 2vmin;
@@ -40,7 +42,14 @@ body {
   margin-right: 1vw;
   gap: 2vmin;
 }
-
+input:active{
+  border:none;
+  outline:none;
+}
+input{
+  border:none;
+  outline:none;
+}
 .icon {
   width: 1.5vw;
   height: 1.5vw;
@@ -151,14 +160,78 @@ h3 {
   flex: 0.5 1 auto;
   flex-direction: column;
 }
+.flexspecial{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap:15vw;
+}
 #themeBox {
   position: relative;
-  margin: 0vmin;
+  margin: 0;
   width: 100%;
-  height: 20vmin;
+  min-height: 20vmin;
   background-color: var(--orange-yellow-crayola);
   background-image: linear-gradient(to left, rgb(250, 194, 64), #ffd166ff);
   box-shadow: 2px 5px 15px #ccc;
+  transition: 1s;
+  cursor: pointer;
+  text-align: center;
+  font-size: max(1rem,1.5vw);
+  flex-direction: column;
+  justify-content: center;
+  gap:0;
+}
+#themeBox form{
+  display: none;
+}
+#themeTitle, #themeDes{
+  line-height: 3vmin;
+  color:#eee;
+}
+#themeDes{
+  font-size: 0.7em;
+}
+.themeBoxActive{
+  width:30vw !important;
+  height:30vw !important;
+  max-height: 75vh;
+  transform: translate(10vw,5vh);
+}
+#themeEditIcon{
+  filter: none !important;
+  position: absolute;
+  bottom:5%; right:10%;
+}
+#themeBox input{
+  width:75%;
+  height:auto;
+  padding:5%;
+  text-align: center;
+  border:none;
+  border-radius: 2vmin;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: max(1rem,1.5vw);
+}
+#themeBox button{
+  font-size: max(1rem,1.5vw);
+  display:block;
+  margin:auto;
+  margin-top: 2vh;
+  letter-spacing: 0.5vmin;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 0;
+  color:var(--midnight-green-eagle-green);
+  font-weight: 700;
+}
+#themeBox ~ p{
+  margin-top: 5vw;
+  display:none;
+  width:30vw;
+  opacity: 0.7;
+  text-align: justify;
+  line-height: 2vw;
+  font-size: max(1.2vw,1rem);
 }
 #themeBox .footer {
   position: absolute;
@@ -173,6 +246,15 @@ h3 {
 .cjHead {
   gap: 1vw;
 }
+#gjText{
+  color:var(--blue-ncs);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-align: center;
+  font-style: italic;
+  display: none;
+  cursor: pointer;
+}
 textarea {
   border: none;
   height: 20vh;
@@ -180,8 +262,12 @@ textarea {
   font-size: 1.2rem;
   resize: none;
 }
-.icon {
-  opacity: 0.6;
+.cjBtns{
+  gap:0;
+  justify-content: flex-end;
+}
+.cjBtns button{
+  margin:0;
 }
 .bodyMid {
   width: 50vw;
@@ -241,7 +327,7 @@ button:hover {
 .bodyRight {
   width: auto;
   min-width: 150px;
-  height: 100px;
+  margin-top: 9vh;
 }
 .status {
   flex-direction: column;

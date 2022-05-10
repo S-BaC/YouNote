@@ -23,6 +23,121 @@ class User{
         return [this.username, this.password, this.email];
     }
 }
+class Theme{
+    constructor(){
+        this.panelActive = false;
+        this.theme = JSON.parse(localStorage.getItem('theme')) || {title : '',des : ''};
+        
+        this.show();
+
+        $('#themeBox').mousedown(()=>this.togglePanel());
+        $('#themeEditIcon').mousedown((e)=>this.editTheme(e));
+        $('#themeBox form').mousedown((e)=>e.stopPropagation());
+    }
+    togglePanel(){
+        $('.bodyMid').toggle();
+        $('.bodyRight').toggle();
+        $('.journal').toggle();
+        $('#themeBox ~ p').toggle();
+
+        if(!this.panelActive){
+            $('.bodyLeft').css('width', '100vw');
+            $('#themeBox').addClass('themeBoxActive');
+            $('#themeDes').css('font-size','1em');
+            this.panelActive = true;
+        }else{
+            $('.bodyLeft').css('width', '15vw');
+            $('#themeBox').removeClass('themeBoxActive');
+            $('#themeDes').css('font-size','0.7em');
+            this.panelActive = false;
+        }
+    }
+    editTheme(e){
+        e.stopPropagation();
+        $('#themeBox div, #themeBox form').toggle();
+        $('#themeBox form').submit(e=>{
+            e.preventDefault();
+            this.theme = {
+                title : $('#themeBox form input[name="title"]').val(),
+                des : $('#themeBox form input[name="des"]').val()
+            }
+            localStorage.setItem('theme', JSON.stringify(this.theme));
+            $('#themeBox form').trigger('reset');
+            this.show();
+            $('#themeBox div, #themeBox form').toggle();
+            $('#themeBox form').unbind();
+            $('#themeBox form').mousedown((e)=>e.stopPropagation());
+        });
+    }
+    show(){
+        $('#themeTitle').html(this.theme.title);
+        $('#themeDes').html(this.theme.des);
+    }
+
+}
+
+class Journal{
+    constructor(){
+        this.gjTxt = (JSON.parse(localStorage.getItem('journal'))).gratitude|| '';
+        this.miscTxt = (JSON.parse(localStorage.getItem('journal'))).misc || [];
+        if(this.gjTxt){
+            $('#gjForm, #gjText').toggle();
+            this.showGJ();
+            this.listenGJText();
+        }
+        this.listenGJ();
+        this.listenMJ(); //MiscJ === CommonJ.
+    }
+    listenGJ(){
+        $('#gjForm').submit(e=>{
+            e.preventDefault();
+            this.gjTxt = $('#gjForm input').val();
+            this.update();
+            this.showGJ();
+            $('#gjForm, #gjText').toggle();
+            this.listenGJText();
+        })
+    }
+    listenGJText(){
+        $('#gjText').mousedown(e=>{
+            $('#gjForm, #gjText').toggle();
+            $('#gjText').unbind();
+        })
+    }
+    showGJ(){
+        $('#gjText').html(this.gjTxt);
+    }
+    update(){
+        localStorage.setItem('journal',JSON.stringify({
+            gratitude : this.gjTxt,
+            misc : this.miscTxt
+        }))
+    }
+    listenMJ(){
+
+        $('#cjForm').submit(e=>{
+            e.preventDefault();
+        })
+        //Saves and clears the field.
+        $('#cjSave').mousedown((e)=>{
+            this.miscTxt.push(
+                $('textarea').val()
+            );
+            this.update();
+            $('textarea').val('');
+        })
+
+        //Shows the miscJournal texts saved.
+        $('#cjView').mousedown((e)=>{
+            $('textarea').toggle();
+            $('#mjText').html('');
+            this.miscTxt.forEach(txt=>{
+                $('#mjText').append(`<li>${txt}</li>`);
+            })
+        })
+    }
+}
+
 
 //Parent class for Todos and Projects.
 class Lists{
@@ -55,7 +170,6 @@ class Lists{
     }
     listen(){
         $(this.domInput).mousedown(()=>{
-            $('#addToList h2').text('Speed+1 !');
             $('#body').css('opacity', '0');
             $('#addToList').css('display','flex');
             $('#addToList form').submit((e)=>{
@@ -81,7 +195,6 @@ class Lists{
         })
     }
 }
-
 class Icons{
     constructor(){
         this.infoIconShown = false;
@@ -110,17 +223,13 @@ class Icons{
         let index = Array.from(document.querySelectorAll('.footer')).indexOf(selectedItem);
         let todoArr = JSON.parse(localStorage.getItem('todoList'));
         if(index<todoArr.length){
-            console.log("removing todoItem");
             todoArr = todoArr.filter(i => todoArr.indexOf(i) !== index);
             localStorage.setItem('todoList',JSON.stringify(todoArr));
-            console.log(todoArr);
         } else{
             index = index-todoArr.length;
-            console.log("removing projItem");
             let projArr = JSON.parse(localStorage.getItem('projects'));
             projArr = projArr.filter(i=>projArr.indexOf(i) !== index);
             localStorage.setItem('projects', JSON.stringify(projArr));
-            console.log(projArr);
         }
 
     }
@@ -129,33 +238,6 @@ class Icons{
         Progress.addProgress(title);
         Progress.showProgress();
         this.delete(event);
-    }
-}
-class Progress{
-    constructor(){
-        Progress.showProgress();
-    }
-    static addProgress(title){
-        let progressArr = JSON.parse(localStorage.getItem('progress')) || [];
-        progressArr.push({
-            title: title,
-            time: new Date().toLocaleTimeString()
-        })
-        localStorage.setItem('progress', JSON.stringify(progressArr));
-    }
-    static showProgress(){
-        $('.bodyRight').html('<p>Progress</p>');
-        let progressArr = JSON.parse(localStorage.getItem('progress'));
-        if(progressArr !== null){
-            progressArr.forEach(item=>{
-                $('.bodyRight').append(
-                    `<div class="status card flex">
-                        <p>${item.title}</p>
-                        <p><em>${item.time}</em></p>
-                    </div>`
-                )
-            })
-        }
     }
 }
 class TodoPanel extends Lists{
@@ -186,8 +268,38 @@ class ProjectPanel extends Lists{
 }
 
 
-class Journal{
-
+class Progress{
+    constructor(){
+        Progress.showProgress();
+        $('.bodyRight button').mousedown((e)=>this.clear());
+    }
+    clear(){
+        console.log("clearing");
+        localStorage.setItem('progress',JSON.stringify([]));
+        $('.c3wrapper').html('');
+    }
+    static addProgress(title){
+        let progressArr = JSON.parse(localStorage.getItem('progress')) || [];
+        progressArr.push({
+            title: title,
+            time: new Date().toLocaleTimeString()
+        })
+        localStorage.setItem('progress', JSON.stringify(progressArr));
+    }
+    static showProgress(){
+        $('.c3wrapper').html('');
+        let progressArr = JSON.parse(localStorage.getItem('progress'));
+        if(progressArr !== null){
+            progressArr.forEach(item=>{
+                $('.c3wrapper').append(
+                    `<div class="status card flex">
+                        <p>${item.title}</p>
+                        <p><em>${item.time}</em></p>
+                    </div>`
+                )
+            })
+        }
+    }
 }
 
 //let user = new User();
@@ -199,5 +311,8 @@ function start(){
     $('#body').css('opacity','1');
     new TodoPanel();
     new ProjectPanel();
+    new Progress();
     new Icons();
+    new Theme();
+    new Journal();
 }
