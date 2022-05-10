@@ -105,9 +105,10 @@ class Theme{
 
 class Journal{
     constructor(){
-        this.gjTxt = (JSON.parse(localStorage.getItem('journal'))).gratitude|| '';
-        this.miscTxt = (JSON.parse(localStorage.getItem('journal'))).misc || [];
-        if(this.gjTxt){
+        let journal = JSON.parse(localStorage.getItem('journal')) || {gratitude:'', misc:''}
+        this.gjTxt = journal.gratitude;
+        this.miscTxt = journal.misc;
+        if(this.gjTxt!==''){
             $('#gjForm, #gjText').toggle();
             this.showGJ();
             this.listenGJText();
