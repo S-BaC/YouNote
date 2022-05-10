@@ -23,6 +23,33 @@ class User{
         return [this.username, this.password, this.email];
     }
 }
+class Tabs{
+    constructor(){
+        $('.tab1, .tab2, .tab3').mousedown(e=>{
+            this.changeBgColor(e);
+            $('#body').css('opacity', '0');
+            $('#msg').css('display', 'flex');
+        })
+        $('.tab0').mousedown(e=>{
+            Tabs.openHomeTab();
+        })
+    }
+    changeBgColor(e){
+        let bgColors = ['#eee', '#ef476f', '#ffd166', '#118ab2']
+        
+        let tabsArr = Array.from(document.getElementsByClassName('tab'));
+        let index = tabsArr.indexOf(e.target.parentElement);
+        $('body').css('backgroundColor', bgColors[index]);
+    }
+    static openHomeTab(){
+        //$('#login').css('display','none');
+        $('#msg').css('display', 'none');
+
+        $('body').css('backgroundColor', '#eee');
+        $('#body').css('opacity','1');
+    }
+}
+
 class Theme{
     constructor(){
         this.panelActive = false;
@@ -114,10 +141,10 @@ class Journal{
         }))
     }
     listenMJ(){
-
         $('#cjForm').submit(e=>{
             e.preventDefault();
         })
+
         //Saves and clears the field.
         $('#cjSave').mousedown((e)=>{
             this.miscTxt.push(
@@ -129,12 +156,35 @@ class Journal{
 
         //Shows the miscJournal texts saved.
         $('#cjView').mousedown((e)=>{
-            $('textarea').toggle();
-            $('#mjText').html('');
-            this.miscTxt.forEach(txt=>{
-                $('#mjText').append(`<li>${txt}</li>`);
-            })
+            $('textarea, #mjText').toggle();
+            this.mjView();
         })
+
+        //Clears all notes.
+        $('#cjClear').mousedown((e)=>{
+            this.miscTxt = [];
+            this.update();
+            $('#mjText').html('');
+        })
+    }
+    deleteMJ(e){
+        let noteArr = Array.from(document.getElementsByClassName('mjDeleteIcon'));
+        let index = noteArr.indexOf(e.target);
+        this.miscTxt = this.miscTxt.filter(note=>this.miscTxt.indexOf(note)!==index);
+        this.update();
+        this.mjView();
+    }
+    mjView(){
+        $('#mjText').html('');
+        this.miscTxt.forEach(txt=>{
+            $('#mjText').append(
+                `<li class='flex flexLi'>
+                    <p>${txt}</p>
+                    <img class="mjDeleteIcon icon" src="icons/bin.png" alt="bin">
+                </li>`);
+        })
+        //Deletes a particular note as selected.
+        $('.mjDeleteIcon').mousedown(e=>this.deleteMJ(e));
     }
 }
 
@@ -302,17 +352,20 @@ class Progress{
     }
 }
 
-//let user = new User();
-start();
+
+$(document).ready(
+    //let user = new User();
+   start()
+)
 
 function start(){
-    $('body').css('backgroundColor', '#eee');
-    $('#login').css('display','none');
-    $('#body').css('opacity','1');
     new TodoPanel();
     new ProjectPanel();
     new Progress();
     new Icons();
     new Theme();
     new Journal();
+    new Tabs();
+    Tabs.openHomeTab();
 }
+

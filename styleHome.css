@@ -32,6 +32,20 @@ body {
   border-radius: 2vmin;
   box-shadow: 5px 10px 15px #ccc;
 }
+#msg{
+  display:none;
+
+  position: relative;
+  width:100%;
+  justify-content: center;
+}
+#msg div{
+  text-align: center;
+  padding:3vmin;
+  position:absolute;
+  top:10vh;
+  background-image: linear-gradient(to left, #06d6a0ff, rgb(26, 189, 145));
+}
 .itemTime{
   display:none;
 }
@@ -49,6 +63,7 @@ input:active{
 input{
   border:none;
   outline:none;
+  font-size: 1.2rem;
 }
 .icon {
   width: 1.5vw;
@@ -143,6 +158,7 @@ h3 {
   background-image: linear-gradient(to left, #06d6a0ff,rgb(49, 189, 151));
 }
 #login{
+  display:none;
   background-image: linear-gradient(to left,rgb(224, 58, 97), rgb(253, 98, 134));
 }
 #login form{
@@ -187,9 +203,10 @@ h3 {
 }
 #themeTitle, #themeDes{
   line-height: 3vmin;
-  color:#eee;
+  color:#118ab2ff;
 }
 #themeDes{
+  color:#555;
   font-size: 0.7em;
 }
 .themeBoxActive{
@@ -269,6 +286,26 @@ textarea {
 .cjBtns button{
   margin:0;
 }
+#mjText{
+  display:none;
+}
+#mjText li:first-child{
+  border-top: none;
+}
+.flexLi{
+  text-indent: 2vmin;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 1vmin 0;
+  border-top: 1px solid var(--caribbean-green);
+}
+.flexLi:hover .icon{
+  display:block;
+}
+.flexLi .icon{
+  display:none;
+  filter: invert(36%) sepia(100%) saturate(642%) hue-rotate(156deg) brightness(97%) contrast(87%);
+}
 .bodyMid {
   width: 50vw;
   flex: 1 1 auto;
@@ -327,7 +364,8 @@ button:hover {
 .bodyRight {
   width: auto;
   min-width: 150px;
-  margin-top: 9vh;
+  border-left: 1px solid var(--caribbean-green);
+  padding-left: 1vmin;
 }
 .status {
   flex-direction: column;

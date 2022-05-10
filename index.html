@@ -15,11 +15,21 @@
             <h3>You_Notes</h3>
         </div>
         <div id="tabs" class="flex">
-            <div class="tab"><p>Home</p></div>
+            <div class="tab tab0"><p>Home</p></div>
             <div class="tab tab1"><p>Inbox</p></div>
             <div class="tab tab2"><p>Share</p></div>
             <div class="tab tab3 flex"><img src="icons/user (1).png" alt="Profile"></div>
         </div>
+    </div>
+    <div id="msg" class="flex">
+        <div class="card">
+            <h2>🚧 Still in Development 🚧</h2>
+            <p>
+                Thanks for checking out. <br><br>
+                Hope to present you with great features soon.
+            </p>
+        </div>
+        
     </div>
     <div id="addToList" class="form flex card">
         <h2>Speeding Up !</h2>
@@ -67,18 +77,20 @@
             <div class="journal">
                 <form action="" id="cjForm" class="flex">
                     <div class="cjHead flex">
-                        <p>Misc. Journal &#8595</p>
+                        <p>Notes &#8595</p>
                     </div>
                     <textarea name="commonJournal" type="text" placeholder="What's on your mind?">
                     </textarea>
-                    <ul id="mjText"></ul>
+                    <div id="mjText"></div>
                     <div class="flex cjBtns">
+                        <button id="cjClear">Clear</button>
                         <button id="cjSave">Save</button>
                         <button id="cjView">View</button>
                     </div>
                 </form>
             </div>
         </div>
+
         <div class="bodyMid flex">
             <div class="journal">
                 <div id="gjText"></div>
@@ -86,7 +98,6 @@
                     <input name="gratitudeJournal" type="text" placeholder="Write down your most gratifying moments &#10084;"/>
                     <button> Change </button>
                 </form>
-                <img id="gjEditIcon" class="icon" src="icons/edit.png">
             </div>
             <div class="cards2Col">
                 <div class="card1Col">
