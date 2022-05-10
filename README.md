@@ -11,3 +11,4 @@ credit for icons go to:
 <a href="https://www.flaticon.com/free-icons/dot" title="dot icons">Dot icons created by hirschwolf - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/info" title="info icons">Info icons created by Chanut - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/user" title="user icons">User icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/trash" title="trash icons">Trash icons created by Freepik - Flaticon</a>

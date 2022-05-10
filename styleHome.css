@@ -30,6 +30,9 @@ body {
   border-radius: 2vmin;
   box-shadow: 5px 10px 15px #ccc;
 }
+.itemTime{
+  display:none;
+}
 .footer {
   color: #333;
   display: flex;
@@ -37,13 +40,18 @@ body {
   margin-right: 1vw;
   gap: 2vmin;
 }
+
 .icon {
   width: 1.5vw;
   height: 1.5vw;
+  max-width: 20px;
+  max-height: 20px;
+  margin-bottom: 1vmin;
   filter: invert(100%) sepia(0%) saturate(1564%) hue-rotate(331deg)
     brightness(112%) contrast(101%);
   cursor: pointer;
 }
+
 .trophyIcon{
     filter: none;
 }
@@ -236,9 +244,17 @@ button:hover {
   height: 100px;
 }
 .status {
-    margin-bottom: 1vmin;
+  flex-direction: column;
+  gap:0;
+  line-height: 0;
+  padding: 1vmin;
+  margin-bottom: 1vmin;
+  background-image: linear-gradient(to left, rgb(86, 224, 187), rgb(63, 190, 157));
 }
-.statusItem {
-  align-items: center;
-  justify-content: center;
+.status p{
+  color:#eee;
+  font-size: 0.8rem;
+}
+.status p:first-of-type{
+  font-size: 1.2rem;
 }
