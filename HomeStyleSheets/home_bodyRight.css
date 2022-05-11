@@ -1,0 +1,26 @@
+/*  
+    Right Side of the body, including:
+        -   Status/Progress Panel
+*/
+
+.bodyRight {
+    width: auto;
+    min-width: 150px;
+    border-left: 1px solid var(--caribbean-green);
+    padding-left: 1vmin;
+  }
+  .status {
+    flex-direction: column;
+    gap:0;
+    line-height: 0;
+    padding: 1vmin;
+    margin-bottom: 1vmin;
+    background-image: linear-gradient(to left, rgb(86, 224, 187), rgb(63, 190, 157));
+  }
+  .status p{
+    color:#eee;
+    font-size: 0.8rem;
+  }
+  .status p:first-of-type{
+    font-size: 1.2rem;
+  }

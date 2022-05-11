@@ -1,0 +1,59 @@
+/*  
+    Middle Part of the body, including:
+        -   Gratitude Journal
+        -   TodoList
+        -   Projects
+*/
+
+.bodyMid {
+    width: 50vw;
+    flex: 1 1 auto;
+      gap:1vmin;
+    flex-direction: column;
+  }
+  #gjText{
+    color:var(--blue-ncs);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+    font-style: italic;
+    display: none;
+    cursor: pointer;
+  }
+  .journal input {
+    border: none;
+    height: 5vmin;
+    width: 100%;font-size: 1.2rem;
+  }
+  .cards2Col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2vmin;
+    justify-items: center;
+  }
+  .todoItem,
+  .projItem {
+    max-width: 600px;
+    flex-direction: column;
+    gap: 0px;
+    color: #eee;
+    padding: 10px 15px;
+    font-weight: bold;
+    margin-bottom: 2vmin;
+    background-image: linear-gradient(to left, #118ab2ff, rgb(44, 119, 145));
+  }
+  .projItem {
+    background-image: linear-gradient(to left, #ef476fff, rgb(212, 104, 130));
+  }
+  .itemHead{
+      margin-bottom: 0;
+      font-weight: bold;
+      letter-spacing: 0.1rem;
+      color:#eee;
+  }
+  .todoItem .itemHead{
+      text-transform: uppercase;
+  }
+  .itemBody{
+      font-weight: 300;
+  }  

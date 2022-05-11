@@ -1,0 +1,132 @@
+/*  
+    Left side of the body, including:
+        -   Themebox
+        -   Notes
+*/
+
+.bodyLeft {
+    width: 15vw;
+    flex: 0.5 1 auto;
+    flex-direction: column;
+  }
+  .flexspecial{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap:15vw;
+  }
+  #themeBox {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    min-height: 20vmin;
+    background-color: var(--orange-yellow-crayola);
+    background-image: linear-gradient(to left, rgb(250, 194, 64), #ffd166ff);
+    box-shadow: 2px 5px 15px #ccc;
+    transition: 1s;
+    cursor: pointer;
+    text-align: center;
+    font-size: max(1rem,1.5vw);
+    flex-direction: column;
+    justify-content: center;
+    gap:0;
+  }
+  #themeBox form{
+    display: none;
+  }
+  #themeTitle, #themeDes{
+    line-height: 3vmin;
+    color:#118ab2ff;
+  }
+  #themeDes{
+    color:#555;
+    font-size: 0.7em;
+  }
+  .themeBoxActive{
+    width:30vw !important;
+    height:30vw !important;
+    max-height: 75vh;
+    transform: translate(10vw,5vh);
+  }
+  #themeEditIcon{
+    filter: none !important;
+    position: absolute;
+    bottom:5%; right:10%;
+  }
+  #themeBox input{
+    width:75%;
+    height:auto;
+    padding:5%;
+    text-align: center;
+    border:none;
+    border-radius: 2vmin;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: max(1rem,1.5vw);
+  }
+  #themeBox button{
+    font-size: max(1rem,1.5vw);
+    display:block;
+    margin:auto;
+    margin-top: 2vh;
+    letter-spacing: 0.5vmin;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 0;
+    color:var(--midnight-green-eagle-green);
+    font-weight: 700;
+  }
+  #themeBox ~ p{
+    margin-top: 5vw;
+    display:none;
+    width:30vw;
+    opacity: 0.7;
+    text-align: justify;
+    line-height: 2vw;
+    font-size: max(1.2vw,1rem);
+  }
+  #themeBox .footer {
+    position: absolute;
+    bottom: 1vmin;
+    right: 0.5vmin;
+  }
+  
+  #noteForm {
+    flex-direction: column;
+    gap: 1vmin;
+  }
+  .noteHead {
+    gap: 1vw;
+  }
+  textarea {
+    border: none;
+    height: 20vh;
+    width: 100%;
+    font-size: 1.2rem;
+    resize: none;
+  }
+  .noteBtns{
+    gap:0;
+    justify-content: flex-end;
+  }
+  .noteBtns button{
+    margin:0;
+  }
+  #noteText{
+    display:none;
+  }
+  #noteText li:first-child{
+    border-top: none;
+  }
+  .flexLi{
+    text-indent: 2vmin;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 1vmin 0;
+    border-top: 1px solid var(--caribbean-green);
+  }
+  .flexLi:hover .icon{
+    display:block;
+  }
+  .flexLi .icon{
+    display:none;
+    filter: invert(36%) sepia(100%) saturate(642%) hue-rotate(156deg) brightness(97%) contrast(87%);
+  }

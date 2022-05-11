@@ -4,10 +4,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouNote</title>
-    <link rel="stylesheet" href="styleHome.css">
-    <!-- <script defer src="jquery/jquery-ui.js"></script> -->
+
+    <link rel="stylesheet" href="HomeStyleSheets/home_root.css">
+    <link rel="stylesheet" href="HomeStyleSheets/home_forms.css">
+    <link rel="stylesheet" href="HomeStyleSheets/home_bodyLeft.css">
+    <link rel="stylesheet" href="HomeStyleSheets/home_bodyMid.css">
+    <link rel="stylesheet" href="HomeStyleSheets/home_bodyRight.css">
+
     <script defer src="jquery/script.js"></script>
-    <script defer src="index.js"></script>
+    <script type="module" defer src="./index.js"></script>
 </head>
 <body>
     <div id="header" class="flex">
@@ -75,17 +80,17 @@
             </div>
             
             <div class="journal">
-                <form action="" id="cjForm" class="flex">
-                    <div class="cjHead flex">
+                <form action="" id="noteForm" class="flex">
+                    <div class="noteHead flex">
                         <p>Notes &#8595</p>
                     </div>
-                    <textarea name="commonJournal" type="text" placeholder="What's on your mind?">
+                    <textarea name="noteJournal" type="text" placeholder="What's on your mind?">
                     </textarea>
-                    <div id="mjText"></div>
-                    <div class="flex cjBtns">
-                        <button id="cjClear">Clear</button>
-                        <button id="cjSave">Save</button>
-                        <button id="cjView">View</button>
+                    <div id="noteText"></div>
+                    <div class="flex noteBtns">
+                        <button id="noteClear">Clear</button>
+                        <button id="noteSave">Save</button>
+                        <button id="noteView">View</button>
                     </div>
                 </form>
             </div>
