@@ -22,7 +22,7 @@ class Lists{
         console.log("showing todoItems");
         // Displaying the items.
         $(this.domOutput).html('');
-        this.listArr = JSON.parse(localStorage.getItem(this.listName));
+        this.listArr = JSON.parse(localStorage.getItem(this.listName)) || [];
         this.listArr.forEach(item=>{
             $(this.domOutput).prepend(
                 `<div class="${this.itemType} card flex">
@@ -140,7 +140,7 @@ export class ProjectPanel extends Lists{
     // Project panel has more icons to show.
     show(){
         console.log("showing Projects");
-        this.listArr = JSON.parse(localStorage.getItem(this.listName));
+        this.listArr = JSON.parse(localStorage.getItem(this.listName)) || [];
         $(this.domOutput).html('');
         this.listArr.forEach(item=>{
             $(this.domOutput).prepend(
