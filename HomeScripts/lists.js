@@ -23,6 +23,7 @@ class Lists{
         // Displaying the items.
         $(this.domOutput).html('');
         this.listArr = JSON.parse(localStorage.getItem(this.listName)) || [];
+        if(this.listArr.length === 0){return;} // Pages not working without this.
         this.listArr.forEach(item=>{
             $(this.domOutput).prepend(
                 `<div class="${this.itemType} card flex">
@@ -142,6 +143,7 @@ export class ProjectPanel extends Lists{
         console.log("showing Projects");
         this.listArr = JSON.parse(localStorage.getItem(this.listName)) || [];
         $(this.domOutput).html('');
+        if(this.listArr.length === 0){return;} // Pages not working without this.
         this.listArr.forEach(item=>{
             $(this.domOutput).prepend(
                 `<div class="${this.itemType} card flex">
