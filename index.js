@@ -1,7 +1,7 @@
 // import {User} from 'user';
 import {Theme} from './HomeScripts/theme.js';
 import {Journals} from './HomeScripts/journals.js';
-import {Icons, TodoPanel, ProjectPanel} from './HomeScripts/lists.js';
+import {TodoPanel, ProjectPanel} from './HomeScripts/lists.js';
 import {Progress} from './HomeScripts/progress.js';
 
 //Tabs on Navbar.
@@ -33,18 +33,18 @@ class Tabs{
 }
 
 //  For 'Home' Screen:
-$(document).ready(
-   start()
+$(document).ready(()=>{
+    start();
+    }
 )
 
 function start(){
-    new TodoPanel();
-    new ProjectPanel();
-    new Progress();
-    new Icons();
-    new Theme();
-    new Journals();
-    new Tabs();
+    let todoPanel = new TodoPanel();
+    let projectPanel = new ProjectPanel();
+    let progress = new Progress();
+    let theme = new Theme();
+    let journals = new Journals();
+    let tabs = new Tabs();
     Tabs.openHomeTab();
 }
 
